@@ -1,0 +1,6 @@
+# To install required modules  run:
+#
+#
+#
+duckduckgo_search         # via pip
+tldextract         # via pip

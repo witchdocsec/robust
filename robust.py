@@ -11,12 +11,15 @@ def parser():
 	parser.add_argument("--url")
 	parser.add_argument("--codes",nargs="+")
 	parser.add_argument("-nosplit")
+	parser.add_argument("-cookie",nargs="+")
+	parser.add_argument("-uagent",nargs="+")
 	args = parser.parse_args()
 	runrobust(args)
 
 def runrobust(args):
 	found=[]
 	def bust(href):
+		headers={"cookie":" ".join(args.cookie),"user-agent":" ".join(args.uagent)}
 		try:
 			r=requests.get(href)
 			splitl=r.text.split("\n")
@@ -31,7 +34,7 @@ def runrobust(args):
 						entry=entry.split("?")[0].replace("*","")
 						entry=entry.split("&")[0]
 						if not re.match(entry, "\s") and not tldextract.extract(href).domain.split(".")[0] in entry.lower() and len(entry) < 25 and not entry in found and not "#" in entry:
-							r=requests.get(args.url+"/"+entry, allow_redirects=False)
+							r=requests.get(args.url+"/"+entry, allow_redirects=False,headers=headers)
 							if str(r.status_code) in args.codes:
 								print("found: "+entry+" ["+str(r.status_code)+"]")
 								found.append(entry)

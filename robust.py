@@ -62,10 +62,5 @@ def runrobust(args):
 			t.start()
 		for t in threads:
 			t.join()
-
-
-
-
-	print(*splt)
-
+			
 parser()

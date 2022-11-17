@@ -12,4 +12,4 @@ python3 robust.py [-h] [--url URL] [--codes CODES [CODES ...]] [-cookie COOKIE [
 # example
 python3 robust.py --url https://example.com --codes 200 403 --cookie role=user; id=1356 --uagent Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:107.0) Gecko/20100101 Firefox/107.0 -nosplit
 
-![image](https://user-images.githubusercontent.com/107813117/194931560-c04eb6bc-cf06-4787-8dbf-302cc3a3cb45.png)
+![image](https://user-images.githubusercontent.com/107813117/202379537-de8add16-4bb0-47dd-b454-42cfd89eed02.png)

@@ -28,8 +28,8 @@ def runrobust(args):
 					else:
 						lnsplt=line.replace("Disallow: ","").split("/")
 					for entry in lnsplt:
-						q=entry.split("?")
-						entry=q[0].replace("*","")
+						entry=entry.split("?")[0].replace("*","")
+						entry=entry.split("&")[0]
 						if not re.match(entry, "\s") and not tldextract.extract(href).domain.split(".")[0] in entry.lower() and len(entry) < 25 and not entry in found and not "#" in entry:
 							r=requests.get(args.url+"/"+entry, allow_redirects=False)
 							if str(r.status_code) in args.codes:

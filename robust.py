@@ -19,7 +19,11 @@ def parser():
 def runrobust(args):
 	found=[]
 	def bust(href):
-		headers={"cookie":" ".join(args.cookie),"user-agent":" ".join(args.uagent)}
+		headers={}
+		if args.cookie:
+			headers["cookie"]=" ".join(args.cookie)
+		if args.uagent:
+			headers["user-agent"]=" ".join(args.uagent)
 		try:
 			r=requests.get(href)
 			splitl=r.text.split("\n")
@@ -62,5 +66,5 @@ def runrobust(args):
 			t.start()
 		for t in threads:
 			t.join()
-			
+
 parser()

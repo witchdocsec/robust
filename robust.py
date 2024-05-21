@@ -1,6 +1,6 @@
 #imports
 import requests
-from duckduckgo_search import ddg
+from duckduckgo_search import DDGS
 import tldextract
 import numpy as np
 import threading
@@ -53,7 +53,7 @@ def runrobust(args):
 		return(np.array_split(a, n))
 
 	keywords = "filetype:TXT +inurl:\"robots.txt\""
-	results = ddg(keywords, max_results=250)
+	results = DDGS().text(keywords, max_results=250)
 	results=(href for href in (res["href"] for res in results))
 	results=[*results]
 	results=split(results,5)
